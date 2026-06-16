@@ -12,4 +12,8 @@ let CLOSE_EYES = "close your eyes"
 [<Literal>]
 let JUMP = "jump"
 
-let DEFAULT_ACTIONS = [ WINK; DOUBLE_BLINK; CLOSE_EYES; JUMP ]
+[<Literal>]
+let REVERSAL = "reverse"
+
+let DEFAULT_ACTIONS_PER_BIT =
+    Map [ (1, WINK); (2, DOUBLE_BLINK); (4, CLOSE_EYES); (8, JUMP); (16, REVERSAL) ]

@@ -38,4 +38,4 @@ open secret_handshake.SecretHandshake
 [<TestCase(30, ExpectedResult = JUMP + CLOSE_EYES + DOUBLE_BLINK)>]
 [<TestCase(31, ExpectedResult = JUMP + CLOSE_EYES + DOUBLE_BLINK + WINK)>]
 let TestSecretHandshake handshake =
-    execute handshake DEFAULT_ACTIONS |> String.concat ""
+    execute handshake DEFAULT_ACTIONS_PER_BIT |> String.concat ""

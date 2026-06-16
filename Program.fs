@@ -4,7 +4,7 @@ open secret_handshake.Actions
 open secret_handshake.SecretHandshake
 
 let printHandshakeAndResult handshake =
-    printfn $"Result for {handshake} is {execute handshake DEFAULT_ACTIONS}"
+    printfn $"Result for {handshake} is {execute handshake DEFAULT_ACTIONS_PER_BIT}"
 
 printHandshakeAndResult 3
 printHandshakeAndResult 9
