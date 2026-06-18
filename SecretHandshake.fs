@@ -1,6 +1,7 @@
 ﻿module secret_handshake.SecretHandshake
 
 open secret_handshake.Actions
+open secret_handshake.Extensions
 
 let private secretActions =
     [ (0b00001, Action Wink)
@@ -14,15 +15,9 @@ let private applySpecialOp =
     | SpecialOp Reverse -> List.rev
     | Action _ -> id
 
-let private applySpecialOps allOperations =
-    let actionsOnly =
-        allOperations
-        |> List.choose (function
-            | Action a -> Some a
-            | _ -> None)
-
-    allOperations |> List.fold (fun state op -> applySpecialOp op state) actionsOnly
-
+let rec private applySpecialOps allOperations =
+    let actionsOnly = allOperations |> List.choose (function Action a -> Some a | _ -> None)
+    allOperations |> List.fold (flip applySpecialOp) actionsOnly
 
 let secretHandshake integerCode : Action list =
     secretActions
