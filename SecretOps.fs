@@ -6,12 +6,12 @@ type Actions =
     | CloseYourEyes
     | Jump
 
-type ReverseOrder =
+type SpecialOps =
     | Reverse
 
 type SecretOps =
     | Action of Actions
-    | ReverseOrder of ReverseOrder
+    | SpecialOp of SpecialOps
 
 module Actions =
     let toString =
