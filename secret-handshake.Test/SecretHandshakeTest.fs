@@ -39,5 +39,5 @@ open secret_handshake.SecretHandshake
 [<TestCase(31, ExpectedResult = "jump" + "close your eyes" + "double blink" + "wink")>]
 let TestSecretHandshake handshake =
     secretHandshake handshake
-    |> List.map Actions.toString
+    |> List.map Action.toString
     |> String.concat ""

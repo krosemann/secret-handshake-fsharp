@@ -1,19 +1,19 @@
 ﻿module secret_handshake.Actions
 
-type Actions =
+type Action =
     | Wink
     | DoubleBlink
     | CloseYourEyes
     | Jump
 
-type SpecialOps =
+type SpecialOp =
     | Reverse
 
-type SecretOps =
-    | Action of Actions
-    | SpecialOp of SpecialOps
+type SecretOp =
+    | Action of Action
+    | SpecialOp of SpecialOp
 
-module Actions =
+module Action =
     let toString =
         function
         | Wink -> "wink"
