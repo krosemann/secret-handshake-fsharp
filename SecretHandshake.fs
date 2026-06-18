@@ -9,11 +9,6 @@ let private secretActions: (int * SecretOps) list =
       (0b01000, Action Jump)
       (0b10000, ReverseOrder Reverse) ]
 
-let private actionFor bit =
-    List.filter (fun mapping -> fst mapping = bit) secretActions
-    |> List.exactlyOne
-    |> snd
-
 let private applySpecialOp =
     function
     | ReverseOrder _ -> List.rev
@@ -27,12 +22,11 @@ let private applySpecialActions operations =
             | Action a -> Some a
             | _ -> None)
 
-    operations
-    |> List.fold (fun state op -> applySpecialOp op state) actionsOnly
+    operations |> List.fold (fun state op -> applySpecialOp op state) actionsOnly
 
 
 let secretHandshake integerCode : Actions list =
-    List.map fst secretActions
-    |> List.map (fun bit -> integerCode &&& bit)
-    |> List.choose (fun bit -> if bit > 0 then Some(actionFor bit) else None)
+    secretActions
+    |> List.filter (fun (bit, _) -> integerCode &&& bit <> 0)
+    |> List.map snd
     |> applySpecialActions
