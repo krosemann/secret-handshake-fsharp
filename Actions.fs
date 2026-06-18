@@ -1,16 +1,23 @@
 ﻿module secret_handshake.Actions
 
-[<Literal>]
-let WINK = "wink"
+type Actions =
+    | Wink
+    | DoubleBlink
+    | CloseYourEyes
+    | Jump
 
-[<Literal>]
-let DOUBLE_BLINK = "double blink"
+type ReverseOrder =
+    | Reverse
 
-[<Literal>]
-let CLOSE_EYES = "close your eyes"
+type SecretOps =
+    | Action of Actions
+    | ReverseOrder of ReverseOrder
 
-[<Literal>]
-let JUMP = "jump"
+module Actions =
+    let toString =
+        function
+        | Wink -> "wink"
+        | DoubleBlink -> "double blink"
+        | CloseYourEyes -> "close your eyes"
+        | Jump -> "jump"
 
-[<Literal>]
-let REVERSAL = "reverse"
