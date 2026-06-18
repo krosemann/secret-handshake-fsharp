@@ -16,8 +16,8 @@ let private reverseIfNecessary actions =
     else
         actions
 
-let execute handshake : string list =
+let secretHandshake integerCode : string list =
     Seq.toList secretActions.Keys
-    |> List.map (fun bit -> handshake &&& bit)
+    |> List.map (fun bit -> integerCode &&& bit)
     |> List.choose (fun bit -> if bit > 0 then Some(secretActions[bit]) else None)
     |> reverseIfNecessary

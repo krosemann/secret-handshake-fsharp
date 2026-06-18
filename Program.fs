@@ -2,8 +2,8 @@
 
 open secret_handshake.SecretHandshake
 
-let printHandshakeAndResult handshake =
-    printfn $"Result for {handshake} is {execute handshake}"
+let printHandshakeAndResult code =
+    printfn $"Result for {code} is {secretHandshake code}"
 
 printHandshakeAndResult 3
 printHandshakeAndResult 9
